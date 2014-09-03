@@ -1,0 +1,22 @@
+    ! resolution independent files
+RADN1=sgpgxg.table8               ! rad.tables and history files
+RADN2=LWTables33k.1a              ! rad.tables and history files
+RADN4=LWTables33k.1b              ! rad.tables and history files
+RADN5=H2Ocont_MT_CKD  ! Mlawer/Tobin_Clough/Kneizys/Davies H2O continuum table
+! other available H2O continuum tables:
+!    RADN5=H2Ocont_Ma_2004
+!    RADN5=H2Ocont_Roberts
+!    RADN5=H2Ocont_MT_CKD  ! Mlawer/Tobin_Clough/Kneizys/Davies
+RADN3=miescatpar.abcdv2
+! updated aerosols need MADAER=3
+RH_QG_Mie=oct2003.relhum.nr.Q633G633.table
+RADN6=dust_mass_CakmurMillerJGR06_72x46x20x7x12
+RADN7=STRATAER.VOL.SATO.1850-1999.Apr02_hdr
+RADN8=cloud.epsilon4.72x46
+RADN9=solar.DBbglean.ann850-2000.uvflux_hdr       ! need KSOLAR=2
+RADNE=topcld.trscat8
+ISCCP=ISCCP.tautables
+! ozone files (minimum 1, maximum 9 files + 1 trend file)
+GHG=GHG.Mar2009.txt ! use GHG.Jul2009.txt for runs that start before 1850
+dH2O=dH2O_by_CH4_monthly
+BC_dep=BC.Dry+Wet.depositions.ann

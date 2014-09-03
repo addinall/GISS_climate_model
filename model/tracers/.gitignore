@@ -1,0 +1,9 @@
+*.a
+g*.o
+*.mod
+*.smod
+*.ERR
+/.depend
+/.depend_tmp.old
+/.current_options
+*~

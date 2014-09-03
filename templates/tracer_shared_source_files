@@ -1,0 +1,6 @@
+! Codes common to atmospheric tracer sets
+TRACER_COM                          ! configurable tracer code
+TRACERS_DRV |-O0|                   ! O0 speeds compilation and no difference for this file
+TRACERS                             ! generic tracer code
+TRDRYDEP                            ! dry deposition of tracers
+TRDIAG_COM TRACER_PRT               ! tracer diagnostic printout

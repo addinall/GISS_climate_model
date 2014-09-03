@@ -1,0 +1,21 @@
+MODEL_COM                           ! model variables 
+MODELE                              ! Main and model overhead
+ALLOC_DRV                           ! domain decomposition, allocate global distributed arrays
+ATMDYN_COM                          ! atmospheric dynamics
+ATM_UTILS                           ! utilities for some atmospheric quantities
+QUS_COM QUSDEF                      ! T/Q moments, 1D QUS
+CLOUDS2 CLOUDS2_DRV CLOUDS_COM      ! clouds modules
+SURFACE FLUXES                      ! surface calculation and fluxes
+GHY_COM GHY_DRV    ! + giss_LSM     ! land surface and soils + snow model
+VEG_DRV                             ! vegetation
+! VEG_COM VEGETATION                ! old vegetation
+ENT_DRV  ENT_COM   ! + Ent          ! new vegetation
+PBL_COM PBL_DRV PBL                 ! atmospheric pbl
+ATURB_E1                            ! turbulence in whole atmosphere
+LAKES_COM LAKES                     ! lake modules
+SEAICE SEAICE_DRV                   ! seaice modules
+LANDICE LANDICE_DRV                 ! land ice modules
+ICEDYN_DRV ICEDYN                   ! ice dynamics modules
+RAD_COM RAD_DRV RADIATION           ! radiation modules
+RAD_UTILS ALBEDO                    ! radiation and albedo
+DIAG_COM DIAG DEFACC                ! diagnostics

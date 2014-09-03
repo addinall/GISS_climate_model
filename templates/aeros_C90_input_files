@@ -1,0 +1,56 @@
+!-------Aerosol inputs, for imAER=5 --------------
+!----oxidants needed if not coupled to chem ----
+!---these are place-holders, right now must run coupled ----
+!AER_CHEM=OXID_E__1TgfF40_2x2.5
+!AER_OH_STRAT=Strat_OH_drewE_20
+!O3_FIELD=Ox_3D_field_bell
+!OFFLINE_HNO3.nc=HNO3_E70_GISS4x5.nc
+!OFFLINE_SEAS.nc=SEASALT_EK1su_GISS4x5.nc
+!------nitrate inputs--------------
+NH3_01=AR5_C90/NH3hCON_OCEANflux_Jan10_C90title_h
+NH3_02=AR5_C90/transient/NH3_agr_AR5_1850-2000_C90_h
+NH3_03=AR5_C90/transient/NH3_awb_AR5_1850-2000_C90_h
+NH3_04=AR5_C90/transient/NH3_dom_AR5_1850-2000_C90_h
+NH3_05=AR5_C90/transient/NH3_ind_AR5_1850-2000_C90_h
+NH3_06=AR5_C90/transient/NH3_ene_AR5_1850-2000_C90_h
+NH3_07=AR5_C90/transient/NH3_tra_AR5_1850-2000_C90_h
+NH3_08=AR5_C90/transient/NH3_forestfire_AR5_1900-2000_C90_h
+NH3_09=AR5_C90/transient/NH3_grassfire_AR5_1900-2000_C90_h
+! ------- aerosol, needed for imAER= 1 or 3 or 5-----------
+PSREF=ANN1955.mkE4C90x.prsurf  ! time avg. surf. pres. on model grid
+SO2_VOLCANO=SO2_volc_2000_1x1_pres.nc
+! -------- aerosol, needed for imAER = 3 or 5 --------------
+DMS_SEA=DMS_Kettle_Andeae_C90
+! The following line is only needed for imAER=1
+! Note that if gas-phase chemistry is enabled, both
+! TERPENE and Terpenes_01 are used, which differ significantly
+!TERPENE=terp_Guenther_C90
+!SO2_AIRCRAFT=NOy_sources/aircraft_4x5_1940-2000 ! zero in 1940 and before.
+!--------AR5 inputs for imAER=5 --------------------
+BC_EM_1=AR5_C90/transient/BCII_awb_AR5_1850-2000_C90_h
+BC_EM_2=AR5_C90/transient/BCII_dom_AR5_1850-2000_C90_h
+BC_EM_3=AR5_C90/transient/BCII_ene_AR5_1850-2000_C90_h
+BC_EM_4=AR5_C90/transient/BCII_ind_AR5_1850-2000_C90_h
+BC_EM_5=AR5_C90/transient/BCII_tra_AR5_1850-2000_C90_h
+BC_EM_6=AR5_C90/transient/BCII_wst_AR5_1850-2000_C90_h
+BC_EM_7=AR5_C90/transient/BCII_shp_AR5_1850-2000_C90_h
+OC_EM_1=AR5_C90/transient/OCII_awb_AR5_1850-2000_C90_h
+OC_EM_2=AR5_C90/transient/OCII_dom_AR5_1850-2000_C90_h
+OC_EM_3=AR5_C90/transient/OCII_ene_AR5_1850-2000_C90_h
+OC_EM_4=AR5_C90/transient/OCII_ind_AR5_1850-2000_C90_h
+OC_EM_5=AR5_C90/transient/OCII_tra_AR5_1850-2000_C90_h
+OC_EM_6=AR5_C90/transient/OCII_wst_AR5_1850-2000_C90_h
+OC_EM_7=AR5_C90/transient/OCII_shp_AR5_1850-2000_C90_h
+SO2_01=AR5_C90/transient/SO2_shp_AR5_1850-2000_C90_h
+SO2_02=AR5_C90/transient/SO2_awb_AR5_1850-2000_C90_h
+SO2_03=AR5_C90/transient/SO2_dom_AR5_1850-2000_C90_h
+SO2_04=AR5_C90/transient/SO2_ind_AR5_1850-2000_C90_h
+SO2_05=AR5_C90/transient/SO2_tra_AR5_1850-2000_C90_h
+SO2_06=AR5_C90/transient/SO2_wst_AR5_1850-2000_C90_h
+SO2_07=AR5_C90/transient/SO2_ene_AR5_1850-2000_C90_h
+SO2_08=AR5_C90/transient/SO2_forestfire_AR5_1900-2000_C90_h
+SO2_09=AR5_C90/transient/SO2_grassfire_AR5_1900-2000_C90_h
+BCB_01=AR5_C90/transient/BCB_forestfire_AR5_1900-2000_C90_h
+BCB_02=AR5_C90/transient/BCB_grassfire_AR5_1900-2000_C90_h
+OCB_01=AR5_C90/transient/OCB_forestfire_AR5_1900-2000_C90_h
+OCB_02=AR5_C90/transient/OCB_grassfire_AR5_1900-2000_C90_h

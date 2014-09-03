@@ -1,0 +1,64 @@
+# This file contains global options for modelE. By default they are
+# adjusted to the working environment of Ra.giss.nasa.gov .
+
+## Directory structure ##
+
+# DECKS_REPOSITORY - a directory for permanenet storage of run info.
+# All rundecks that you create will be copied to this directory. 
+DECKS_REPOSITORY=/u/cmrun/modelE/decks
+
+# CMRUNDIR - directory to which all run directories will be linked.
+# This directory will be searched by most scripts for locations of 
+# specific runs.
+CMRUNDIR=/u/cmrun
+
+# GCMSEARCHPATH - directory to search for gcm input files.
+# All necessary input files should be copied or linked to this directory.
+GCMSEARCHPATH=/u/cmrun
+
+# EXECDIR - path to directory with modelE scripts and with some
+# executables. This directory should contain the scripts from modelE/exec.
+EXECDIR=/u/exec
+
+# NETCDFHOME - path to location of netcdf library. Leave blank if netcdf
+# is not installed on this computer
+NETCDFHOME=/usr/local/other/netcdf/3.6.1_intel-9.1.042
+
+# SAVEDISK - a directory where all run directories (which will contain
+# all output files such as rsf, acc etc.) will be created. This should
+# be big enough to accomodate all model output.
+SAVEDISK=/raid1
+
+## Customizable setings for Makefile ##
+
+# MAILTO - email address of the user. When the program ends/crashes
+# all notifications will be sent to this address. If not specified
+# `whoami` will be used.
+MAILTO=
+
+# OVERWRITE - can "gmake rundeck" overwrite files already in repository?
+# (i.e. in the directory DECKS_REPOSITORY)
+OVERWRITE=NO
+
+# OUTPUT_TO_FILES - if set to YES all errors and warnings will be sent
+# to files with the names <source_name>.ERR
+OUTPUT_TO_FILES=YES
+
+# VERBOSE_OUTPUT - if set to YES gmake will show compilation commands
+# and some other information. Otherwise most of the output will be
+# suppressed
+VERBOSE_OUTPUT=NO
+
+# MP - multiprocessing support. If set to YES gmake will compile the 
+# code with OpenMP instructions. This option has effect only on SGI and Compaq.
+MP=NO
+
+# UMASK - the value of 'umask' you want to use for model runs. The files
+# inside the run directory will have permissions set according to this
+# mask.
+UMASK=002
+
+# COMPILER - this option has effect only on Linux machines. It specifies
+# your f90 compiler. Currently supported: Absoft, Lahey, Portland Group.
+# default is Absoft.
+# COMPILER=Absoft

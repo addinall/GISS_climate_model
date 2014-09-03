@@ -1,0 +1,78 @@
+#!/bin/sh
+## simple script to run the model
+
+OPTS=
+
+if [ "$MODELERC"x = x ] ; then MODELERC=$HOME/.modelErc ; fi
+if [ -f $MODELERC ] ; then
+    . $MODELERC
+else
+    echo config file not found : $MODELERC
+    exit 1
+fi
+
+if [ $# -le 0 ] ; then
+    echo "Usage: runE RUNID [-np number_of_cpus] [-cold-restart]"
+    echo "Restart the run RUNID"
+    echo "-cold-restart will re-initialize the model as specified"
+    echo "by ISTART= line in the rundeck"
+    exit 1; fi
+
+## The first argument is RunID
+RUNID=$1; shift
+
+## The rest should be passed to "RunID" script
+OPTS=$@
+
+if [ ! -d $CMRUNDIR/$RUNID ] ; then
+    echo "Run directory not found: $CMRUNDIR/$RUNID"
+    exit 1; fi
+
+## check if this run is already running
+if [ -f $CMRUNDIR/$RUNID/lock ] ; then
+    echo "            **********************                "
+    echo "$RUNID seems to be already running in $CMRUNDIR/$RUNID"
+    echo
+    echo "If you think it is an error, then most probably this"
+    echo "task was interrupted in an unusual way. Please check."
+    echo "Then remove the lock file:"
+    echo "$CMRUNDIR/$RUNID/lock"
+    echo "and restart the runE."
+    echo "            **********************                "
+    exit 1
+fi
+
+## check if this run is already finished
+if [ `head -1 $CMRUNDIR/$RUNID/run_status` -eq 13 ] ; then
+    if [ `find $CMRUNDIR/$RUNID/run_status -newer $CMRUNDIR/$RUNID/I` ] ; then
+        echo "            **********************                "
+        echo "$RUNID seems to have already finished"
+        echo "Update (or touch) $CMRUNDIR/$RUNID/I to continue the run or"
+        echo "  final diagnostics"
+        echo "            **********************                "
+        exit 1
+    fi
+fi
+
+
+cd "$CMRUNDIR/$RUNID"
+echo "#!/bin/sh" > run_command
+echo "cd $CMRUNDIR/$RUNID" >> run_command
+echo "./$RUNID $OPTS" >> run_command
+chmod 755 run_command
+
+echo "submitting ./$RUNID $OPTS"
+$QSUB_STRING ./run_command
+rc=`head -1 run_status`
+if [ $rc -ne 13 ] && [ $rc -ne 12 ] ; then
+    echo " Problem encountered while running $RUID";
+    if [ $rc -ne 1 ] ; then
+        error_message=`tail -1 run_status`
+    else 
+        error_message="Unknown reason (Segmentation fault?)"
+    fi
+    echo " >>> $error_message <<<"
+    exit 2 ;
+else
+    echo "Run $RUNID completed successfully"
+fi

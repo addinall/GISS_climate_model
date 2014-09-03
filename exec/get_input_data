@@ -1,0 +1,114 @@
+#!/usr/bin/perl
+
+use File::Copy;
+use Getopt::Long;         #module to process command line options
+
+GetOptions("w", "t=s") || die "problem in GetOptions";
+
+if ( $#ARGV < 0 ) { 
+    print "Usage: $0 [-w] RunID [data_dir]\n"; 
+    print "  Creates a directory 'data_dir' (or 'RunID_data' by default)\n";
+    print "  and copies there all input files required to run RunID.\n";
+    print "  Intended to be used when taking the model off-site.\n";
+    print "  Options:\n";
+    print "  -w  instead of using local repository try to download\n";
+    print "      necessary files from central storage (using wget).\n";
+    exit; 
+}
+
+## default settings
+$DECKS_REPOSITORY='';
+$GCMSEARCHPATH='';
+$DATA_PORTAL_URL = 
+    "http://portal.nccs.nasa.gov/GISS_modelE/modelE_input_data";
+
+$modelerc = (getpwuid($>))[7]."/.modelErc";
+
+if ( -f $modelerc ) {
+  open MODELERC, $modelerc or die "can't open $modelerc\n";
+  while(<MODELERC>) {
+    $DECKS_REPOSITORY = $1 if /^ *DECKS_REPOSITORY *= *(\S+)/;
+    $GCMSEARCHPATH = $1 if /^ *GCMSEARCHPATH *= *(\S+)/;
+  }
+  close MODELERC;
+}
+
+$runID = shift;
+($data_dir = shift) or $data_dir = $runID.'_data';
+
+$max_age = 365*100;
+if ( $opt_t ) {
+    $max_age = $opt_t;
+}
+
+if ( $opt_w ) {
+    print "Will search for data files in: $DATA_PORTAL_URL\n";
+} else {
+    print "Will search for data files in: $GCMSEARCHPATH\n";
+}
+print "Will store the data files  in: $data_dir\n";
+
+if ( -f "$runID.R" ) { $rundeck = "$runID.R"; }
+else { $rundeck = "$DECKS_REPOSITORY/$runID.R"; }
+
+print "Will use rundeck: $rundeck\n";
+
+open RUNDECK,"$rundeck" or die "can't open file: $rundeck\n";
+
+while(<RUNDECK>) { last if /^Data +input +files/i; }
+
+@a=();
+while(<RUNDECK>) {
+    last if /^Label +and +Namelist/i;
+    chop;
+    s/!.*$//;  #remove comments
+    push @a, /(\S+ *= *\S+)/g;
+}
+
+## creating data dir
+if ( ! -d $data_dir ) {
+    mkdir $data_dir, 0755 or die "can't create dir: $data_dir\n";
+}
+
+foreach $str (@a) {
+    #print "$str\n";
+    ($tag,$filename) = split / *= */, $str;
+    if ( ! -f "$data_dir/$filename" ) {
+	create_path( "$data_dir/$filename" );
+	if ( $opt_w ) {
+	    my $file_dir = `dirname $data_dir/$filename`;
+	    chop $file_dir;
+	    print "Downloading:     $filename\n";
+	    `cd $file_dir &&  wget $DATA_PORTAL_URL/$filename`;
+	    $rcode = $? >> 8;
+	    if ( $rcode != 0 ) { die "download failed\n"; }
+	} else {
+	    if ( -M "$GCMSEARCHPATH/$filename" < $max_age ) {
+		print "Copying:     $filename\n";
+		copy( "$GCMSEARCHPATH/$filename", "$data_dir/$filename") or
+		    die "Can't copy $GCMSEARCHPATH/$filename\n";
+	    } else {
+		print "Too old:     $filename\n";
+	    }
+	}
+    } else {
+	print "Already present:     $filename\n";
+    }
+}
+
+
+sub create_path {
+    my $path = shift;
+    my @dirs = split /\//, $path;
+    pop @dirs;
+    if ( $path =~ /^\// ) { $dir = ""; }
+    else {  $dir = "."; }
+    foreach my $name ( @dirs ) {
+	$dir .= '/'.$name;
+	if ( ! -e $dir ) {
+	    print "creating dir: $dir\n";
+	    mkdir $dir, 0755 or die "can't create dir: $dir\n";
+	}
+    }
+
+}

@@ -1,0 +1,10 @@
+*.a
+*.ERR
+*.mod
+*.o
+*.smod
+*~
+/.current_options
+/.depend
+/.depend_tmp.old
+/libgiss_LSM.a

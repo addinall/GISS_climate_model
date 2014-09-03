@@ -1,0 +1,7 @@
+CDN=CD_CS90                      ! surf.drag coefficient
+VEG=V_CS90_144X90_5percent       ! veg
+CROPS=CROPS_CS90                 ! crops
+SOIL=SOIL_CS90                   ! soil/topography bdy.conds
+TOP_INDEX=top_index_CS90         ! only used if #define do_topmodel_runoff
+ZVAR=ZVAR_CS90                   ! topographic variance for gravity wave drag
+GLMELT=GLMELT_CS90               ! glacial melt distribution

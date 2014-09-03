@@ -1,0 +1,6 @@
+OIC=OIC.E2HX2.L32.D1201         ! Levitus ocean intial conditions
+OFTAB=OFTABLE_NEW               ! ocean function table
+AVR=OPF.E2HX2.L32               ! ocean filter
+KBASIN=KB144X90.modelE          ! ocean basin designations
+TOPO_OC=Z144X90N_nocasp.1       ! ocean fraction and topography
+TOPO=Z144X90N_nocasp.1          ! surface fractions and topography

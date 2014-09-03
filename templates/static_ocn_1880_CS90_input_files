@@ -1,0 +1,4 @@
+     ! ocean data for "prescribed ocean" runs : climatological ocean
+OSST=OST_C90.1876-1885avg.HadISST1.1         ! prescr. climatological ocean
+SICE=SICE_C90.1876-1885avg.HadISST1.1        ! prescr. climatological sea ice
+TOPO=Z_C90fromZ1QX1N                         ! atm topog and surf type fractions

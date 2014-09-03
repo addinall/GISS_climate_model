@@ -1,0 +1,5 @@
+OIC=OIC288X180.D1201                ! Levitus ocean intial conditions
+OFTAB=OFTABLE_NEW                   ! ocean function table
+AVR=OPF.E1QX1.L32                   ! ocean filter
+KBASIN=KB288X180.modelE.BS1         ! ocean basin designations (1 cell Bering Strait)
+TOPO_OC=Z1QX1N.BS1                  ! ocean fraction and topography (1 cell Bering Strait)

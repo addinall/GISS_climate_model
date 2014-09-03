@@ -1,0 +1,11 @@
+CDN=CD144X90.ext
+VEG=V144X90_no_crops.ext
+CROPS=CROPS_and_pastures_Pongratz_to_Hurtt_144X90N_nocasp
+IRRIG=IRRIG_1850_V144X90.bi
+SOIL=S144X900098M.ext
+TOP_INDEX=top_index_144x90_a.ij.ext
+ZVAR=ZVAR2X25A             ! topographic variation for gwdrag
+! probably need these (should convert to 144x90)
+soil_textures=soil_textures_top30cm_2x2.5
+SOILCARB_global=soilcarb_top30cm_nmaps_2x2.5bin.dat
+GLMELT=GLMELT_144X90_gas.OCN

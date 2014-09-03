@@ -1,0 +1,58 @@
+#!/bin/sh
+## RUN     Run Climate Model saving the printout  10/21/91
+   CMRUNDIR='/u/cmrun'
+   OPTS=
+   if [ -f $HOME/.modelErc ] ; then . $HOME/.modelErc; fi
+
+   if [ $# -le 0 ] ; then
+      echo "Usage: runE [-q] RUNID [max_#_of_processors_to_be_used (default:1)]"
+      echo "Restart the run RUNID"
+      echo "Use '-q' if you don't want to save the printout (.PRT file)."
+      exit; fi
+
+## We have only one option so far. If we need more, they should be
+## added here by means of "case" construct.
+   while [ $1 = -q ] ; do OPTS="$OPTS $1"; shift; done
+   RUNID=$1
+
+   if [ ! -d $CMRUNDIR/$RUNID ] ; then
+      echo "Run directory not found: $CMRUNDIR/$RUNID"
+      exit ; fi
+
+## check if this run is already running
+   if [ -f $CMRUNDIR/$RUNID/lock ] ; then
+     echo "            **********************                "
+     echo "$RUNID seems to be already running in $CMRUNDIR/$RUNID"
+     echo "If you think it is an error, then most probably this"
+     echo "task was interrupted in an unusual way. Please check."
+     echo "Then remove the lock file:"
+     echo "$CMRUNDIR/$RUNID/lock"
+     echo "and restart the runE."
+     echo "            **********************                "
+     exit 1
+   fi
+
+## check if this run is already finished
+   if [ `head -1 $CMRUNDIR/$RUNID/run_status` -eq 13 ] ; then
+      if [ `find $CMRUNDIR/$RUNID/run_status -newer $CMRUNDIR/$RUNID/I` ] ; then
+        echo "            **********************                "
+        echo "$RUNID seems to have already finished"
+        echo "Update $CMRUNDIR/$RUNID/I to continue the run or"
+        echo "remove $CMRUNDIR/$RUNID/end_of_run to print the"
+        echo "  final diagnostics"
+        echo "            **********************                "
+        exit 1
+      fi
+   fi
+
+   nproc=1  ; nptxt=''
+   if echo $2 | grep '^[0-9][0-9]*$' > /dev/null ; then
+   nproc=$2 ; nptxt="using up to $nproc processor(s)" ; fi
+   export MP_SET_NUMTHREADS=$nproc
+#  export OMP_NUM_THREADS=$nproc      # different env variable for Lahey
+
+   cd "$CMRUNDIR/$RUNID"
+   nohup nice -19 ./$RUNID $OPTS &
+   echo "$RUNID started $nptxt"
+   if echo $OPTS | grep -e '-q' > /dev/null; then
+     echo "printout will not be saved"; fi

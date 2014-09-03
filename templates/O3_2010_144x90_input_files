@@ -1,0 +1,15 @@
+! ozone files (minimum 1, maximum 12 files )
+! this set for #defined RAD_O3_GCM_HRES
+O3file_01=jan2010_o3_shindell_144x90x49x12_1850
+O3file_02=jan2010_o3_shindell_144x90x49x12_1870
+O3file_03=jan2010_o3_shindell_144x90x49x12_1890
+O3file_04=jan2010_o3_shindell_144x90x49x12_1910
+O3file_05=jan2010_o3_shindell_144x90x49x12_1930
+O3file_06=jan2010_o3_shindell_144x90x49x12_1940
+O3file_07=jan2010_o3_shindell_144x90x49x12_1950
+O3file_08=jan2010_o3_shindell_144x90x49x12_1960
+O3file_09=jan2010_o3_shindell_144x90x49x12_1970
+O3file_10=jan2010_o3_shindell_144x90x49x12_1980
+O3file_11=jan2010_o3_shindell_144x90x49x12_1990
+O3file_12=jan2010_o3_shindell_144x90x49x12_2000
+Ox_ref=jan2010_o3_shindell_144x90x49x12_April1850 ! for radiative forcing reference

@@ -1,0 +1,56 @@
+!-------Aerosol inputs, for imAER=5 --------------
+!----oxidants needed if not coupled to chem ----
+!---these are place-holders, right now must run coupled ----
+!AER_CHEM=OXID_E__1TgfF40_2x2.5
+!AER_OH_STRAT=Strat_OH_drewE_20
+!O3_FIELD=Ox_3D_field_bell
+!OFFLINE_HNO3.nc=HNO3_E70_GISS4x5.nc
+!OFFLINE_SEAS.nc=SEASALT_EK1su_GISS4x5.nc
+!------nitrate inputs--------------
+NH3_01=NH3hCON_OCEANflux_Jan10_2x2.5_h
+NH3_02=NH3_agr_AR5_1850-2000_2x2.5_h
+NH3_03=NH3_awb_AR5_1850-2000_2x2.5_h
+NH3_04=NH3_dom_AR5_1850-2000_2x2.5_h
+NH3_05=NH3_ind_AR5_1850-2000_2x2.5_h
+NH3_06=NH3_ene_AR5_1850-2000_2x2.5_h
+NH3_07=NH3_tra_AR5_1850-2000_2x2.5_h
+NH3_08=NH3_forestfire_AR5_1900-2000_2x2.5_h
+NH3_09=NH3_grassfire_AR5_1900-2000_2x2.5_h
+! ------- aerosol, needed for imAER= 1 or 3 or 5-----------
+PSREF=ANN1960.E70F40pi.prsurf  ! time avg. surf. pres. on model grid
+SO2_VOLCANO=SO2_volc_2000_2x2.5_pres.nc
+! -------- aerosol, needed for imAER = 3 or 5 --------------
+DMS_SEA=DMS_Kettle_Andreae_2x2.5
+! The following line is only needed for imAER=1
+! Note that if gas-phase chemistry is enabled, both
+! TERPENE and Terpenes_01 are used, which differ significantly
+!TERPENE=terp_Guenther_2x2.5
+!SO2_AIRCRAFT=NOy_sources/aircraft_4x5_1940-2000 ! zero in 1940 and before.
+!--------AR5 inputs for imAER=5 --------------------
+BC_EM_1=BCII_awb_AR5_1850-2000_2x2.5_h
+BC_EM_2=BCII_dom_AR5_1850-2000_2x2.5_h
+BC_EM_3=BCII_ene_AR5_1850-2000_2x2.5_h
+BC_EM_4=BCII_ind_AR5_1850-2000_2x2.5_h
+BC_EM_5=BCII_tra_AR5_1850-2000_2x2.5_h
+BC_EM_6=BCII_wst_AR5_1850-2000_2x2.5_h
+BC_EM_7=BCII_shp_AR5_1850-2000_2x2.5_h
+OC_EM_1=OCII_awb_AR5_1850-2000_2x2.5_h
+OC_EM_2=OCII_dom_AR5_1850-2000_2x2.5_h
+OC_EM_3=OCII_ene_AR5_1850-2000_2x2.5_h
+OC_EM_4=OCII_ind_AR5_1850-2000_2x2.5_h
+OC_EM_5=OCII_tra_AR5_1850-2000_2x2.5_h
+OC_EM_6=OCII_wst_AR5_1850-2000_2x2.5_h
+OC_EM_7=OCII_shp_AR5_1850-2000_2x2.5_h
+SO2_01=SO2_shp_AR5_1850-2000_2x2.5_h
+SO2_02=SO2_awb_AR5_1850-2000_2x2.5_h
+SO2_03=SO2_dom_AR5_1850-2000_2x2.5_h
+SO2_04=SO2_ind_AR5_1850-2000_2x2.5_h
+SO2_05=SO2_tra_AR5_1850-2000_2x2.5_h
+SO2_06=SO2_wst_AR5_1850-2000_2x2.5_h
+SO2_07=SO2_ene_AR5_1850-2000_2x2.5_h
+SO2_08=SO2_forestfire_AR5_1900-2000_2x2.5_h
+SO2_09=SO2_grassfire_AR5_1900-2000_2x2.5_h
+BCB_01=BCB_forestfire_AR5_1900-2000_2x2.5_h
+BCB_02=BCB_grassfire_AR5_1900-2000_2x2.5_h
+OCB_01=OCB_forestfire_AR5_1900-2000_2x2.5_h
+OCB_02=OCB_grassfire_AR5_1900-2000_2x2.5_h

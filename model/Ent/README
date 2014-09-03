@@ -1,0 +1,59 @@
+Ent modules
+
+README - this document
+
+COMPILING INSTRUCTIONS
+HOW-TO
+Rules.make
+sfmakedepend
+makefile
+
+INPUT/OUTPUT DIRECTORIES
+entdata
+entoutput
+
+GLOBAL
+ent_const.f
+ent_types.f
+ent_pfts.f
+ent_pfts_ENT.f
+ent_pfts_GISS.f
+FBBpfts_ENT.f
+FBBpfts_GISS.f
+
+MODEL CONTROL
+$HOME/.entrc *
+ent_input - run parameters
+run_ent - run script
+ent_prog.f
+ent_mod.f
+ent_forcings.f
+gcm_system.f
+gcm_utils.f
+util.f
+ent - name of executable *
+
+PRESCRIBED VEGETATION
+ent_prescribed_drv.f
+ent_prescribed_update.f
+ent_ENTveg.f
+ent_GISSveg.f
+
+MAIN
+ent.f
+
+STRUCTURAL DYNAMICS
+entcells.f
+patches.f
+cohorts.f
+
+BIOPHYSICS AND BIOGEOCHEMISTRY
+biophysics.f
+FBBphotosynthesis.f
+canopyradiation.f
+growthallometry.f
+phenology.f
+reproduction.f
+disturbance.f
+soilbgc.f
+

@@ -1,0 +1,30 @@
+     ! atmospheric tracers
+TRACER_COM  TRACERS_DRV              ! configurable tracer code
+TRACERS                             ! generic tracer code
+TRDIAG_COM TRACER_PRT               ! tracer diagnostic printout
+TRDIAG
+TRACER_GASEXCH_CO2                  ! tracer functions needed for gas exch expts
+!!!!TRACER_GASEXCH_CFC                 ! tracer functions needed for gas exch expts
+
+advc1d|-r8|                         ! tracer transport (for HYCOM only)
+obio_dim|-r8|                       !
+obio_forc|-r8|                      !
+obio_incom|-r8|                     !
+obio_com|-r8|                       !
+obio_model|-r8|                     !
+obio_init|-r8|                      !
+obio_bioinit|-r8|                   !
+obio_daysetrad|-r8|                 !
+obio_daysetbio|-r8|                 !
+obio_ocalbedo|-r8|                  !
+obio_sfcirr|-r8|                    !
+obio_limits|-r8|                    !
+obio_edeu|-r8|                      !
+obio_ptend|-r8|                     !
+obio_update|-r8|                    !
+obio_carbon|-r8|                    !
+obio_trint|-r8|                     !
+obio_reflectance|-r8|
+obio_sinksettl|-r8|
+obio_archyb
+obio_diffmod|-r8|
